@@ -1,0 +1,14 @@
+[Unit]
+Description=set intel cpu power limit watts.
+Conflicts=cpupowerlimit_balance.service cpupowerlimit_powersave.service cpupowerlimit_max_powersave.service cpupowerlimit_performance.service
+
+[Service]
+User=root
+Type=simple
+RemainAfterExit=yes
+
+ExecStartPre=/bin/sleep 30
+ExecStart=/usr/bin/cpupowerlimit max_performance
+
+[Install]
+WantedBy=cpupowerlimit.device
